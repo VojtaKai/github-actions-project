@@ -8,6 +8,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build-java:
@@ -34,7 +35,6 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
         image: vojtakai/java-app-tutorial
-        tags: ${{ github.ref_name }}-${{ github.sha }}, ${{ github.ref_name }}-latest
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
